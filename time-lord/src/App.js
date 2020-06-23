@@ -3,14 +3,13 @@ import Clock from 'react-clock';
 import Moment from 'react-moment';
 import './App.css';
 import Timesheet from './components/Timesheet/Timesheet';
+import Timetable from './components/Timesheet/TimeTable';
 
-export default class App extends React.Component {
-    dateTime() {
-    
+class App extends React.Component {
+  dateTime() {
     var that = this;
     console.log("button clicked")
     var date = new Date();
-
     that.setState({ currentTime: date });
   }
 
@@ -26,8 +25,27 @@ export default class App extends React.Component {
     );
   }
   render() {
-
     const timelogs = [
+      {
+        desc:"work",
+        start:new Date(),
+        finish:new Date(),
+      },
+      {
+        desc:"also this work",
+        start:new Date(),
+        finish:new Date(),
+      },
+      {
+        desc:"this work also",
+        start:new Date(),
+        finish:new Date(),
+      },
+      {
+        desc:"some more work",
+        start:new Date(),
+        finish:new Date(),
+      },
       {
         desc:"work",
         start:new Date(),
@@ -50,13 +68,7 @@ export default class App extends React.Component {
       },
     ];
 
-    const timelogs_html = [];
-    for(let i in timelogs) {
-      const timelog = timelogs[i];
-      const timelog_html = <Timesheet timelog={timelog} />;
-
-      timelogs_html.push(timelog_html);
-    }
+    
 
     
     return(
@@ -103,12 +115,21 @@ export default class App extends React.Component {
           paddingTop: "0.5%",
         }}
       >
-        <Moment format="DD/MM/YYYY HH:MM">{ this.state.currentTime }</Moment>
+        <Moment format="DD/MM/YYYY hh:mm:ss">{ this.state.currentTime }</Moment>
       </div>
-      <div>
-        {timelogs_html}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: "0.5%",
+        }}
+      >
+        <Timetable timelogs={timelogs}></Timetable>
       </div>
       </>
     );
   }
 }
+
+export default App
