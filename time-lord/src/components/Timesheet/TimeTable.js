@@ -1,8 +1,6 @@
 import React from 'react';
-import {useTable,useGroupBy,useFilters,useSortBy,useExpanded,usePagination,useAbsoluteLayout,
-    useAsyncDebounce,useBlockLayout,useColumnOrder,useFlexLayout,useGetLatest,useGlobalFilter,
-    useMountedLayoutEffect,useResizeColumns,useRowSelect,useRowState} from 'react-table'
 import Timesheet from './Timesheet';
+import DescriptionBox from './Timesheet'
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -53,7 +51,7 @@ function Timetable(props) {
             <tr>
               <th>Start Time</th>
               <th>End Time</th>
-              <th>Description</th>
+              <th>Descripton</th>
             </tr>
           </thead>
           <tbody>
@@ -64,4 +62,28 @@ function Timetable(props) {
     )
 }
 
-export default Timetable
+function Descbox(props) {
+    const workdesc_html = [];
+    for(let i in props.workdesc) {
+      const workdescription = props.workdesc[i];
+      const workdescription_html =  <DescriptionBox workdescription={workdescription}/>;
+
+      workdesc_html.push(workdescription_html);
+  }
+    return (
+      <Styles>
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workdesc_html}
+          </tbody>
+        </table>
+      </Styles>
+    )
+}
+
+export {Timetable, Descbox};
