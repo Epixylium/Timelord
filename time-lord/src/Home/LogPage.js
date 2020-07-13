@@ -1,89 +1,65 @@
 import React, { Component } from 'react';
-import {Timetable, Descbox} from '../components/Timesheet/TimeTable';
+import Timetable from '../components/Timesheet/TimeTable';
+import Select from 'react-dropdown-select';
 
-class Timesheets extends Component {
+class LogPage extends Component {
     render() {
         const timelogs = [
             {
               start:new Date(),
               finish:new Date(),
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-            },
-          ];
-      
-          const workdesc = [
-            {
               desc:"work",
             },
             {
-              desc:"also this work",
-            },
-            {
-              desc:"this work also",
-            },
-            {
-              desc:"some more work",
-            },
-            {
+              start:new Date(),
+              finish:new Date(),
               desc:"work",
             },
             {
-              desc:"also this work",
+              start:new Date(),
+              finish:new Date(),
+              desc:"work",
             },
             {
-              desc:"this work also",
+              start:new Date(),
+              finish:new Date(),
+              desc:"work",
             },
             {
-              desc:"some more work",
+              start:new Date(),
+              finish:new Date(),
+              desc:"work",
+            },
+            {
+              start:new Date(),
+              finish:new Date(),
+              desc:"work",
+            },
+            {
+              start:new Date(),
+              finish:new Date(),
+              desc:"work",
+            },
+            {
+              start:new Date(),
+              finish:new Date(),
+              desc:"work",
             },
           ];
 
         return(
-            <>
-                <div>
-
-                </div>     
+            <> 
                 <div
                     style={{
                     display: "flex",
-                    justifyContent: "flex-center",
-                    alignItems: "flex-center",
-                    paddingTop: "0.5%",
+                    justifyContent: "center",
                     }}
                 >
                     <Timetable timelogs={timelogs}></Timetable>
-                    <Descbox workdesc={workdesc.desc}></Descbox>
                 </div>
             </>
         );
     };
 }
 
-export default Timesheets
+export default LogPage

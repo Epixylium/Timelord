@@ -1,6 +1,5 @@
 import React from 'react';
 import Timesheet from './Timesheet';
-import DescriptionBox from './Timesheet'
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -43,7 +42,9 @@ function Timetable(props) {
 
     return (
       <Styles>
-        <table>
+        <table style={{
+          textAlign: "center"
+        }}>
           <thead>
             <tr>
               <th colSpan='3'>Timesheet Collection</th>
@@ -51,7 +52,7 @@ function Timetable(props) {
             <tr>
               <th>Start Time</th>
               <th>End Time</th>
-              <th>Descripton</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
@@ -62,28 +63,4 @@ function Timetable(props) {
     )
 }
 
-function Descbox(props) {
-    const workdesc_html = [];
-    for(let i in props.workdesc) {
-      const workdescription = props.workdesc[i];
-      const workdescription_html =  <DescriptionBox workdescription={workdescription}/>;
-
-      workdesc_html.push(workdescription_html);
-  }
-    return (
-      <Styles>
-        <table>
-          <thead>
-            <tr>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {workdesc_html}
-          </tbody>
-        </table>
-      </Styles>
-    )
-}
-
-export {Timetable, Descbox};
+export default Timetable

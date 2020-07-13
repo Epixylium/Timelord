@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css'
 import {Route, Link} from 'react-router-dom';
-import Timesheets from './Timesheets/LogPage';
+import LogPage from './Home/LogPage';
 import Home from './Home/HomePage';
 
 class App extends React.Component {
@@ -22,22 +22,21 @@ class App extends React.Component {
         </div>
         <div className="Navi" 
           style={{
-            display: "flex",
+            display: "inline",
             justifyContent: "center",
-            alignItems: "",
           }}>
           <header>
             <nav>
               <ul>
                 <li><Link to="/Timesheets">Timesheets</Link></li>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/"></Link></li>
+                <li><Link to="/Transfer">Data Transfer</Link></li>
               </ul>
             </nav>
           </header>
           <Route path="/" exact component={Home}/>
-          <Route path="/Timesheets" exact component={Timesheets}/>
-          <Route path="/" exact/>
+          <Route path="/Timesheets" exact component={LogPage}/>
+          <Route path="/Transfer" exact component={DataTransfer}/>
         </div>
       </>
     );
