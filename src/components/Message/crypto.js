@@ -44,13 +44,13 @@ export async function wallet_to_key (wallet) {
 export async function get_public_key (address) {
     var txid = await arweave.wallets.getLastTransactionID(address)
 
-    if (txid == '') {
+    if (txid === '') {
         return undefined
     }
 
     var tx = await arweave.transactions.get(txid)
 
-    if (tx == undefined) {
+    if (tx === undefined) {
         return undefined
     }
 

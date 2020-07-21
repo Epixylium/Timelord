@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const EmailBadge = function(props) {
     let badge = <span className="badge badge-danger shadow-danger-md animate-pulse fs--10 p--3 mt--n3 position-absolute end-0">{props.new_email_count}</span>;
 
-    if(props.new_email_count == 0 || props.new_email_count == undefined) {
+    if(props.new_email_count === 0 || props.new_email_count === undefined) {
         badge = null;
     }
 

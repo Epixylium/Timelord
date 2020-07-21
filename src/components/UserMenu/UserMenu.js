@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import EmailBadge from './EmailBadge';
-import {getName} from '../Message/helpers';
 
 class UserMenu extends Component {
   state = {

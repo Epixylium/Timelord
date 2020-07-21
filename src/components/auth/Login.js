@@ -49,9 +49,9 @@ class Auth extends Component {
 
           <div className="py-7">
             <h1 className="d-inline-block text-align-end text-center-md text-center-xs display-4 h2-xs w-100 max-w-600 w-100-md w-100-xs">
-              Sign in
+              Sign in To
               <span className="display-3 h1-xs d-block font-weight-medium">
-                Weavemail
+                T i m e L o r d
               </span>
             </h1>
           </div>
