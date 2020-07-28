@@ -3,7 +3,6 @@ import Moment from 'react-moment';
 
 class Timesheet extends Component {
     render() {
-        
         return (
             <tr>
                 <td><Moment format="DD/MM/YYYY HH:MM">{this.props.timelog.start}</Moment></td>

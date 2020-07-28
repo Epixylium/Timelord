@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import EmailBadge from './EmailBadge';
 
 class UserMenu extends Component {
   state = {
@@ -71,7 +70,6 @@ class UserMenu extends Component {
           </ul>
       </nav>
       <ul className="list-inline list-unstyled mb-0 d-flex align-items-end">
-        <EmailBadge new_email_count={this.props.new_email_count} clearNewEmailCount={() => {this.props.clearNewEmailCount()}} />
         <li className="list-inline-item ml--6 mr--6 dropdown">
 
           <a onClick={this.handleMenuToggle.bind(this)} className="btn btn-sm btn-light dropdown-toggle btn-pill pl--12 pr--12" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">

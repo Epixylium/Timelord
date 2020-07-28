@@ -1,51 +1,57 @@
 import React, { Component } from 'react';
 import Timetable from '../components/Timesheet/TimeTable';
-import Select from 'react-dropdown-select';
 
 class LogPage extends Component {
     render() {
-        const timelogs = [
-            {
-              start:new Date(),
-              finish:new Date(),
-              desc:"work",
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-              desc:"work",
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-              desc:"work",
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-              desc:"work",
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-              desc:"work",
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-              desc:"work",
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-              desc:"work",
-            },
-            {
-              start:new Date(),
-              finish:new Date(),
-              desc:"work",
-            },
-          ];
+        const timelogs = {
+              company1: [{
+                start:new Date(),
+                finish:new Date(),
+                desc:"work",
+              }],
+
+              company2: [{
+                start:new Date(),
+                finish:new Date(),
+                desc:"more work",
+              }],
+                        
+              company3: [{
+                start:new Date(),
+                finish:new Date(),
+                desc:"work",
+              }],
+
+              company4: [{
+                start:new Date(),
+                finish:new Date(),
+                desc:"work",
+              }],
+                      
+              company5: [{
+                start:new Date(),
+                finish:new Date(),
+                desc:"work",
+              }],
+
+              company6: [{
+                start:new Date(),
+                finish:new Date(),
+                desc:"work",
+              }],
+            
+              company7: [{
+                start:new Date(),
+                finish:new Date(),
+                desc:"work",
+              }],
+
+              company8: [{
+                start:new Date(),
+                finish:new Date(),
+                desc:"work",
+              }],
+            };
 
         return(
             <> 
