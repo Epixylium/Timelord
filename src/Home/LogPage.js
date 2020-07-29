@@ -29,37 +29,37 @@ class LogPage extends Component {
               company3: [{
                 start:new Date(),
                 finish:new Date(),
-                desc:"work",
+                desc:"even more work",
               }],
 
               company4: [{
                 start:new Date(),
                 finish:new Date(),
-                desc:"work",
+                desc:"even more work still",
               }],
                       
               company5: [{
                 start:new Date(),
                 finish:new Date(),
-                desc:"work",
+                desc:"wow thats a lot of work",
               }],
 
               company6: [{
                 start:new Date(),
                 finish:new Date(),
-                desc:"work",
+                desc:"work is my life",
               }],
             
               company7: [{
                 start:new Date(),
                 finish:new Date(),
-                desc:"work",
+                desc:"work is a thing i do",
               }],
 
               company8: [{
                 start:new Date(),
                 finish:new Date(),
-                desc:"work",
+                desc:"work is a like a skateboard... i just cant stay on it xD",
               }],
             };
 
