@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import Timetable from '../components/Timesheet/TimeTable';
 
 class LogPage extends Component {
+    state = {
+      buttonState: 'start'
+    }
+
+   // changeButtonState() {
+     // if(buttonState = "start") {
+     //   this.setState.buttonState = "finish"
+    //  }
+   // }
+
     render() {
         const timelogs = {
               company1: [{
@@ -55,13 +65,11 @@ class LogPage extends Component {
 
         return(
             <> 
-                <div
-                    style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    }}
-                >
-                    <Timetable timelogs={timelogs}></Timetable>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <Timetable timelogs={timelogs}></Timetable>
+                </div>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <button onClick={this.changeButtonState}>Start/Stop Time</button>
                 </div>
             </>
         );
