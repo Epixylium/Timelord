@@ -9,8 +9,9 @@ import Logout from './components/auth/Logout';
 import arweave from './arweave-config';
 import 'react-toastify/dist/ReactToastify.css';
 import LogPage from './Home/LogPage';
-import Home from './Home/HomePage';
 import DataTransfer from './components/Timesheet/DataTransfer';
+import HomePage from './Home/HomePage';
+import ClientsPage from './Home/ClientsPage';
 
 class App extends Component {
   state = {
@@ -45,7 +46,7 @@ class App extends Component {
     this.setState({isAuthenticated: isAuthenticated === 'true' ? true : false});
 
     
-    if(this.props.isAuthenticated == undefined) {
+    if(this.props.isAuthenticated === undefined) {
       return;
     }
 
@@ -217,9 +218,10 @@ class App extends Component {
           <p>T i m e L o r d</p>
         </div>
         <div>
-          <Route path="/" exact component={Home}/>
+          <Route path="/" exact component={HomePage}/>
           <Route path="/Timesheets" exact component={LogPage}/>
           <Route path="/DataTransfer" exact component={DataTransfer}/>
+          <Route path="/ClientsPage" exact component={ClientsPage}/>
         </div>
       </>
     );

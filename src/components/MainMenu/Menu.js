@@ -13,6 +13,7 @@ class Menu extends Component {
               <MenuItem icon='home' name='Home Page' url='/' {...this.props}/>
               <MenuItem icon='arrow-end' name='Sent Logs' url='/DataTransfer' {...this.props}/>
               <MenuItem icon='arrow-end' name='Timelogs' url='/Timesheets' {...this.props}/>
+              <MenuItem icon='arrow-end' name='Clients' url='/ClientsPage' {...this.props}/>
         </ul>
         </nav>
       </div>
