@@ -11,7 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import LogPage from './Home/LogPage';
 import DataTransfer from './components/Timesheet/DataTransfer';
 import HomePage from './Home/HomePage';
-import ClientsPage from './Home/ClientsPage';
+import ClientList from './components/ClientPages/ClientList';
+import ClientCreator from './components/ClientPages/ClientCreator';
 
 class App extends Component {
   state = {
@@ -198,30 +199,18 @@ class App extends Component {
         <div id="wrapper" className="d-flex align-items-stretch flex-column">
             <ToastContainer />
               {header}
+              <p style={{display: "flex", justifyContent: "center", fontSize: "60px", fontWeight: "bold"}}>T i m e L o r d</p>
             <div id="wrapper_content" className="d-flex flex-fill">
               {side_menu}
-            <div id="middle" className="flex-fill">
-              {routes}
-            </div>
+
+              <div id="middle" className="flex-fill">
+                <Route path="/" exact component={HomePage}/>
+                <Route path="/Timesheets" exact component={LogPage}/>
+                <Route path="/DataTransfer" exact component={DataTransfer}/>
+                <Route path="/ClientList" exact component={ClientList}/>
+                <Route path="/ClientCreator" exact component={ClientCreator}/>
+              </div>
           </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 50,
-            fontWeight: "bold",
-            height: 60,
-          }}   
-        >
-          <p>T i m e L o r d</p>
-        </div>
-        <div>
-          <Route path="/" exact component={HomePage}/>
-          <Route path="/Timesheets" exact component={LogPage}/>
-          <Route path="/DataTransfer" exact component={DataTransfer}/>
-          <Route path="/ClientsPage" exact component={ClientsPage}/>
         </div>
       </>
     );

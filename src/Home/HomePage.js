@@ -30,7 +30,7 @@ class HomePage extends Component {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        paddingTop: "0.25%"
+                        paddingTop: "0.25%",
                     }}
                 >
                     <Clock size={302}

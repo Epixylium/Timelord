@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {saveClient} from './helpers';
+import { saveClient } from './helpers';
+import { Link } from 'react-router-dom';
 
-class ClientsPage extends Component {
+class ClientCreator extends Component {
     state = {
-        Cid: "",
+        Cemail: "",
         Cname: "",
         Caddress: "",
     }
@@ -19,23 +20,22 @@ class ClientsPage extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        
-        saveClient(this.state.Cid, this.state.Cname, this.state.Caddress);
+        saveClient(this.state.Cemail, this.state.Cname, this.state.Caddress);
     }
 
     render() {
         return (
-            <form className="form-horizontal" style={{paddingLeft: "750px", paddingRight: "750px"}}>
+            <form className="form-horizontal" style={{ textSizeAdjust: "auto" , paddingLeft: "400px", paddingRight: "640px"}}>
                 <div className="form-group">
-                    <label className="control-label col-sm-2" htmlFor="Cid">Company ID</label>
-                    <input onChange={ (event) => { this.onChange(event) }} className="form-control" type="text" id="Cid" name="Cid"></input>
+                    <label style={{textSizeAdjust: "auto"}} className="control-label" htmlFor="Cid">Company Email: </label>
+                    <input onChange={ (event) => { this.onChange(event) }} className="form-control" type="text" id="Cemail" name="Cemail"></input>
                 </div>
                 <div className="form-group">
-                    <label className="control-label col-sm-2" htmlFor="Cname">Company Name</label>
+                    <label style={{textSizeAdjust: "auto"}} className="control-label" htmlFor="Cname">Company Name :</label>
                     <input onChange={ (event) => { this.onChange(event) }} className="form-control" type="text" id="Cname" name="Cname"></input>
                 </div>
                 <div className="form-group">
-                    <label className="control-label col-sm-2" htmlFor="Caddress">Company Address</label>
+                    <label style={{textSizeAdjust: "auto"}} className="control-label" htmlFor="Caddress">Company Address: </label>
                     <input onChange={ (event) => { this.onChange(event) }} className="form-control" type="text" id="Caddress" name="Caddress"></input>
                 </div>
                 <div className="form-group">
@@ -46,4 +46,4 @@ class ClientsPage extends Component {
     }
 }
 
-export default ClientsPage
+export default ClientCreator;

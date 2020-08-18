@@ -1,35 +1,8 @@
 import React, { Component } from 'react';
 import Timesheet from './Timesheet';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
-const Styles = styled.div`
-  padding: 1rem;
-
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
-
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
-
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`
 
 class Timetable extends Component {
   render() {
@@ -44,23 +17,23 @@ class Timetable extends Component {
     }
 
     return (
-      <Styles>
-        <table style={{ textAlign: "center" }}>
+      <div className="table-responsive">
+        <table className="table table-align-middle border-bottom mb-6">
           <thead>
             <tr>
-              <th colSpan='3'>Timesheet Collection</th>
+              <th style={{textSizeAdjust: "auto"}} colSpan='3'>Timesheet Collection</th>
             </tr>
             <tr>
-              <th>Start Time</th>
-              <th>End Time</th>
-              <th>Description</th>
+              <th style={{textSizeAdjust: "auto"}}>Start Time</th>
+              <th style={{textSizeAdjust: "auto"}}>End Time</th>
+              <th style={{textSizeAdjust: "auto"}}>Description</th>
             </tr>
           </thead>
           <tbody>
             {timelogs_html}
           </tbody>
         </table>
-      </Styles>
+      </div>
     )
   }
 }
