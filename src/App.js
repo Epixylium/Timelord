@@ -13,6 +13,7 @@ import DataTransfer from './components/Timesheet/DataTransfer';
 import HomePage from './Home/HomePage';
 import ClientList from './components/ClientPages/ClientList';
 import ClientCreator from './components/ClientPages/ClientCreator';
+import TimelogCreator from './components/Timesheet/TimelogCreator';
 
 class App extends Component {
   state = {
@@ -168,12 +169,20 @@ class App extends Component {
           username={this.state.username}
           toggleAside={() => this.toggleAside() }
           />
+          <p style={{display: "flex", justifyContent: "center", fontSize: "60px", fontWeight: "bold"}}>T i m e L o r d</p>
       </header>
     );
+
     let side_menu = (<aside id="aside-main" className={this.state.aside_classes}>
       <Menu {...this.props} toggleAside={() => this.toggleAside() } pending_messages={this.state.pending_messages}/>
     </aside>);
     let routes = [
+      <Route path="/" exact component={HomePage}/>,
+      <Route path="/Timesheets" exact component={LogPage}/>,
+      <Route path="/TimelogCreator" exact component={() => <TimelogCreator history={this.props.history}/>}/>,
+      <Route path="/DataTransfer" exact component={DataTransfer}/>,
+      <Route path="/ClientList" exact component={ClientList}/>,
+      <Route path="/ClientCreator" exact component={() => <ClientCreator history={this.props.history}/>}/>,
       <Route key='logout' path="/logout" exact component={() => <Logout onLogout={this.disconnectWallet.bind(this)} addSuccessAlert={this.addSuccessAlert} expandContentArea={() => {this.expandContentArea()}} />} />
     ];
     if(!this.state.isAuthenticated) {
@@ -199,16 +208,12 @@ class App extends Component {
         <div id="wrapper" className="d-flex align-items-stretch flex-column">
             <ToastContainer />
               {header}
-              <p style={{display: "flex", justifyContent: "center", fontSize: "60px", fontWeight: "bold"}}>T i m e L o r d</p>
+              
             <div id="wrapper_content" className="d-flex flex-fill">
               {side_menu}
 
               <div id="middle" className="flex-fill">
-                <Route path="/" exact component={HomePage}/>
-                <Route path="/Timesheets" exact component={LogPage}/>
-                <Route path="/DataTransfer" exact component={DataTransfer}/>
-                <Route path="/ClientList" exact component={ClientList}/>
-                <Route path="/ClientCreator" exact component={ClientCreator}/>
+                {routes}
               </div>
           </div>
         </div>

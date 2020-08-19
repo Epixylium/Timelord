@@ -4,9 +4,9 @@ class CStruct extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.clients.name}</td>
-                <td style={{ textAlign: "left" }}>{this.props.clients.email}</td>
-                <td style={{ textAlign: "left" }}>{this.props.clients.address}</td>
+                <td>{this.props.client.name}</td>
+                <td style={{ textAlign: "left" }}>{this.props.client.email}</td>
+                <td style={{ textAlign: "left" }}>{this.props.client.address}</td>
             </tr>
         );
     };

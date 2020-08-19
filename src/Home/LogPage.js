@@ -4,86 +4,28 @@ import DateTimePicker from 'react-datetime-picker';
 import Moment from 'react-moment';
 import faker, { fake } from 'faker';
 import { Link } from 'react-router-dom';
+import { getTSheets } from '../components/Timesheet/helpers';
+import { getClients } from '../components/ClientPages/helpers';
 
 class LogPage extends Component {
   state = {
     selectedCompany: 'company1',
-    ssbuttonState: "start",
-    clientbuttonState: "state1",
     clients:[],
-    timelogs: {}
+    timelogs: []
   }
 
   componentDidMount() {
-    const clients = [];
-    for(let i = 0; i < 30; i++) {
-      clients.push(this.addNewClient());
-    }
-
-    const timelogs = {}
-
-    for(let i in clients) {
-      const client = clients[i];
-
-      timelogs[client.id] = [];
-
-      for(let i = 0; i < 5; i++) {
-        timelogs[client.id].push(this.addTimeLog());
-      }
-    }
-
-    this.setState({clients: clients, selectedCompany:clients[0].id, timelogs:timelogs});
-
-    
+    const that = this;
+    getTSheets().then(timelogs => {
+      that.setState({timelogs: timelogs});
+    })
+    getClients().then(clients => {
+      that.setState({clients: clients});
+    })
   }
 
   OnSetCompany(e) {
     this.setState({ selectedCompany: e.target.value })
-  }
-
-  currentTime() {
-    var timeStart = <Moment format="DD/MM/YYYY HH:MM" interval={1000}/>
-    var timeFinish = <Moment format="DD/MM/YYYY HH:MM" interval={1000}/>
-  }
-
-  createTimelog() {
-    if(this.state.ccbuttonState = "start") {
-      const timelogs = {...this.state.timelogs};
-      const company = this.addTimeLog();
-
-      company.push(this.addTimeLog);
-
-      timelogs[company.id] = company;
-
-      this.setState({ccbuttonState: "finish", timelogs: timelogs }); 
-    }
-  }
-
-  addTimeLog() {
-    var startTime = faker.date.recent();
-    var finishTime = faker.date.recent();
-    var description = faker.lorem.sentence();
-    // var startTime = this.currentTime.timeStart; 
-    // var finishTime = this.currentTime.timeFinish;
-    // var description = window.prompt("Enter Description: ");
-    return {
-      start:startTime,
-      finish:finishTime,
-      desc:description,
-    }
-  }
-
-  addNewClient() {
-    var clientID = faker.finance.bic();
-    var clientName = faker.company.companyName();
-    var clientAddress = faker.address.streetName();
-    // var clientPostcode = window.prompt("Enter Client Postcode/Zipcode: ");
-    // var clientPhone = window.prompt("Enter Client Contact Number: ");
-    return {
-      id: clientID,
-      name: clientName,
-      address: clientAddress
-    }
   }
 
   render() {

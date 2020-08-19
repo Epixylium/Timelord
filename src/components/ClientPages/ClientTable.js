@@ -12,7 +12,7 @@ class ClientTable extends Component {
         for(let i in this.props.clients) {
           const client = this.props.clients[i];
           
-          const client_html =  <CStruct client={client}/>;
+          const client_html =  <CStruct key={client.id} client={client}/>;
     
           clients_html.push(client_html);
         }

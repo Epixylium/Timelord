@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import Timesheet from './Timesheet';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom'
-
 
 class Timetable extends Component {
   render() {

@@ -21,6 +21,8 @@ class ClientCreator extends Component {
     onSubmit(event) {
         event.preventDefault();
         saveClient(this.state.Cemail, this.state.Cname, this.state.Caddress);
+
+        this.props.history.push('/ClientList')
     }
 
     render() {
