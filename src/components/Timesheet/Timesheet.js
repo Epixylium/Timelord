@@ -5,9 +5,9 @@ class Timesheet extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.timelogs.start}</td>
-                <td>{this.props.timelogs.finish}</td>
-                <td style={{ textAlign: "left" }}>{this.props.timelogs.desc}</td>
+                <td><Moment format="DD/MM/YYYY hh:mm:ss">{this.props.timelog.start}</Moment></td>
+                <td><Moment format="DD/MM/YYYY hh:mm:ss">{this.props.timelog.finish}</Moment></td>
+                <td style={{ textAlign: "left" }}>{this.props.timelog.desc}</td>
             </tr>
         );
     };

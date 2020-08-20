@@ -5,10 +5,12 @@ class Timetable extends Component {
   render() {
     const timelogs_html = [];
 
-    for(let i in this.props.timelogs[this.props.selectedCompany]) {
-      const timelog = this.props.timelogs[this.props.selectedCompany][i];
+    const timelogs = this.props.timelogs.filter((tl) => tl.clientid == this.props.selectedCompany);
+
+    for(let i in timelogs) {
+      const timelog = timelogs[i];
       
-      const timelog_html =  <Timesheet timelog={timelog}/>;
+      const timelog_html =  <Timesheet key={i} timelog={timelog}/>;
 
       timelogs_html.push(timelog_html);
     }

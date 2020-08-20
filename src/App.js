@@ -177,12 +177,11 @@ class App extends Component {
       <Menu {...this.props} toggleAside={() => this.toggleAside() } pending_messages={this.state.pending_messages}/>
     </aside>);
     let routes = [
-      <Route path="/" exact component={HomePage}/>,
-      <Route path="/Timesheets" exact component={LogPage}/>,
-      <Route path="/TimelogCreator" exact component={() => <TimelogCreator history={this.props.history}/>}/>,
-      <Route path="/DataTransfer" exact component={DataTransfer}/>,
-      <Route path="/ClientList" exact component={ClientList}/>,
-      <Route path="/ClientCreator" exact component={() => <ClientCreator history={this.props.history}/>}/>,
+      <Route key='home' path="/" exact component={HomePage}/>,
+      <Route key='Timesheets' path="/Timesheets" exact component={LogPage}/>,
+      <Route key='TimelogCreator' path="/TimelogCreator" exact component={() => <TimelogCreator history={this.props.history}/>}/>,
+      <Route key='ClientList' path="/ClientList" exact component={ClientList}/>,
+      <Route key='ClientCreator' path="/ClientCreator" exact component={() => <ClientCreator history={this.props.history}/>}/>,
       <Route key='logout' path="/logout" exact component={() => <Logout onLogout={this.disconnectWallet.bind(this)} addSuccessAlert={this.addSuccessAlert} expandContentArea={() => {this.expandContentArea()}} />} />
     ];
     if(!this.state.isAuthenticated) {

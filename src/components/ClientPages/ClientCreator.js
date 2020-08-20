@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { saveClient } from './helpers';
-import { Link } from 'react-router-dom';
 
 class ClientCreator extends Component {
     state = {

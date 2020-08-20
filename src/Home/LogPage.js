@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import Timetable from '../components/Timesheet/TimeTable';
-import DateTimePicker from 'react-datetime-picker';
-import Moment from 'react-moment';
-import faker, { fake } from 'faker';
 import { Link } from 'react-router-dom';
 import { getTSheets } from '../components/Timesheet/helpers';
 import { getClients } from '../components/ClientPages/helpers';
@@ -20,7 +17,7 @@ class LogPage extends Component {
       that.setState({timelogs: timelogs});
     })
     getClients().then(clients => {
-      that.setState({clients: clients});
+      that.setState({clients: clients, selectedCompany: clients[0].id});
     })
   }
 
@@ -44,7 +41,7 @@ class LogPage extends Component {
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <select style={{fontSizeAdjust: "100%"}} className="form-control col-3" onChange={(e) => { this.OnSetCompany(e) }} value={this.state.selectedCompany}>
                   {this.state.clients.map(client => {
-                    return <option value={client.id}>{client.name}</option>
+                    return <option key={client.id} value={client.id}>{client.name}</option>
                   })}
                 </select>
               </div>

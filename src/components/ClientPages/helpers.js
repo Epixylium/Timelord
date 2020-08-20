@@ -61,6 +61,10 @@ export async function getClients() {
 
         const data = await arweave.transactions.getData(txid, {decode: true, string: true});
 
+        if(data.length == 0) {
+            continue;
+        }
+
         clients.push({
             id: txid,
             ... JSON.parse(data)

@@ -1,13 +1,14 @@
 import arweave from '../../arweave-config';
 import { toast } from 'react-toastify';
 
-export async function saveTSheet(tsheet_start, tsheet_finish, tsheet_desc) {
+export async function saveTSheet(client_id, tsheet_start, tsheet_finish, tsheet_desc) {
     console.log(tsheet_start + " " + tsheet_finish + " " + tsheet_desc);
 
     var tsheet = {
+        clientid: client_id,
         start: tsheet_start,
-        start: tsheet_finish,
-        start: tsheet_desc
+        finish: tsheet_finish,
+        desc: tsheet_desc
     }
 
     const jwk = JSON.parse(sessionStorage.getItem('AR_jwk', null));
@@ -61,10 +62,19 @@ export async function getTSheets() {
 
         const data = await arweave.transactions.getData(txid, {decode: true, string: true});
 
-        tsheets.push({
+        if(data.length == 0) {
+            continue;
+        }
+
+        const timesheet = {
             id: txid,
             ... JSON.parse(data)
-        });
+        };
+
+        timesheet.start = new Date(timesheet.start);
+        timesheet.finish = new Date(timesheet.finish);
+
+        tsheets.push(timesheet);
     }
 
     return tsheets;

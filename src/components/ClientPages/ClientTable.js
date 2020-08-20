@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { getClients } from './helpers';
-import styled from 'styled-components';
 import CStruct from './ClientStructure';
 import { Link } from 'react-router-dom';
 
