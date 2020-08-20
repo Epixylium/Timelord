@@ -9,7 +9,6 @@ import Logout from './components/auth/Logout';
 import arweave from './arweave-config';
 import 'react-toastify/dist/ReactToastify.css';
 import LogPage from './Home/LogPage';
-import DataTransfer from './components/Timesheet/DataTransfer';
 import HomePage from './Home/HomePage';
 import ClientList from './components/ClientPages/ClientList';
 import ClientCreator from './components/ClientPages/ClientCreator';
