@@ -3,6 +3,7 @@ import { saveTSheet } from './helpers';
 import { getClients } from '../ClientPages/helpers';
 import Moment from 'react-moment';
 import { toast } from 'react-toastify';
+import {Redirect} from 'react-router-dom';
 
 class TimelogCreator extends Component {
     state = {
@@ -11,14 +12,19 @@ class TimelogCreator extends Component {
         TDesc: "",
         buttonstate: "start",
         clients: [],
-        selectedCompany: null,
-        currentTime: ""
+        selectedCompany: undefined,
+        currentTime: "",
+        needsRedirect: false,
     }
 
     componentDidMount() {
         const that = this;
         getClients().then(clients => {
-            that.setState({clients: clients, selectedCompany:clients[0].id});
+            if(clients.length > 0) {
+                that.setState({clients: clients, selectedCompany:clients[0].id});
+            } else {
+                that.setState({needsRedirect: true})
+            }
         });
     };
 
@@ -78,6 +84,14 @@ class TimelogCreator extends Component {
       }
 
     render() {
+
+        if(this.state.needsRedirect) {
+            toast("You have no clients! Please create a client to record timesheets", { type: toast.TYPE.INFO }); 
+            return (
+                <Redirect to='/ClientCreator' />
+            )
+        }
+
         let startTime = <strong>Press Start to begin</strong>;
         if(this.state.TStart) {
             startTime = <Moment format="DD/MM/YYYY hh:mm:ss">{this.state.TStart}</Moment>;
@@ -91,7 +105,7 @@ class TimelogCreator extends Component {
         return (
             <form className="form-horizontal" style={{ textSizeAdjust: "auto" , paddingLeft: "400px", paddingRight: "640px"}}>
                 <div className="form-group">
-                    <select style={{fontSizeAdjust: "100%"}} className="form-control col-3" onChange={(e) => { this.OnSetCompany(e) }} value={this.state.selectedCompany}>
+                    <select style={{fontSizeAdjust: "100%"}} className="form-control col-3" value={this.state.selectedCompany} onChange={(e) => { this.OnSetCompany(e) }} value={this.state.selectedCompany}>
                         {this.state.clients.map(client => {
                             return <option key={client.id} value={client.id}>{client.name}</option>
                         })}

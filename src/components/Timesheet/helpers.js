@@ -1,5 +1,6 @@
 import arweave from '../../arweave-config';
 import { toast } from 'react-toastify';
+import settings from '../../config';
 
 export async function saveTSheet(client_id, tsheet_start, tsheet_finish, tsheet_desc) {
     console.log(tsheet_start + " " + tsheet_finish + " " + tsheet_desc);
@@ -17,7 +18,7 @@ export async function saveTSheet(client_id, tsheet_start, tsheet_finish, tsheet_
         data: JSON.stringify(tsheet)
     }, jwk);
 
-    transaction.addTag('App', 'Timelord');
+    transaction.addTag('App', settings.APP_NAME);
     transaction.addTag('Type', 'Timesheet');
 
     await arweave.transactions.sign(transaction, jwk);
@@ -45,7 +46,7 @@ export async function getTSheets() {
             expr1: {
                 op: "equals",
                 expr1: "App",
-                expr2: "Timelord"
+                expr2: settings.APP_NAME
             },
             expr2: {
                 op: "equals" ,

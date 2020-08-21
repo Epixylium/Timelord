@@ -17,7 +17,9 @@ class LogPage extends Component {
       that.setState({timelogs: timelogs});
     })
     getClients().then(clients => {
-      that.setState({clients: clients, selectedCompany: clients[0].id});
+      if(clients.length > 0) {
+        that.setState({clients: clients, selectedCompany: clients[0].id});
+      }      
     })
   }
 

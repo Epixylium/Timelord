@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { saveClient } from './helpers';
+import { toast } from 'react-toastify';
 
 class ClientCreator extends Component {
     state = {
@@ -20,8 +21,32 @@ class ClientCreator extends Component {
     onSubmit(event) {
         event.preventDefault();
         saveClient(this.state.Cemail, this.state.Cname, this.state.Caddress);
+        if(this.validateClient() == true) {
+            saveClient(this.state.Cemail, this.state.Cname, this.state.Caddress);
+            this.props.history.push('/ClientList')
+        }
+    }
 
-        this.props.history.push('/ClientList')
+    validateClient() {
+        if(this.state.Cemail.length == 0) {
+            toast("You have not given any input for Company Email!", { type: toast.TYPE.ERROR }); 
+
+            return false;
+        }
+
+        if(this.state.Cname.length == 0) {
+            toast("You have not given any input for Company Name!", { type: toast.TYPE.ERROR }); 
+
+            return false;
+        }
+
+        if(this.state.Caddress.length == 0) {
+            toast("Please fill in the Company Address before submitting client!", { type: toast.TYPE.ERROR }); 
+
+            return false;
+        }
+
+        return true;
     }
 
     render() {

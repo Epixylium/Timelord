@@ -1,34 +1,34 @@
 import arweave from '../../arweave-config';
 
-export async function encrypt_mail (content, subject, pub_key) {
+export async function encrypt_data (data, pub_key) {
     var content_encoder = new TextEncoder()
-    var newFormat = JSON.stringify({ 'subject': subject, 'body': content })
-    var mail_buf = content_encoder.encode(newFormat)
+    var newFormat = JSON.stringify(data)
+    var data_buf = content_encoder.encode(newFormat)
     var key_buf = await generate_random_bytes(256)
 
     // Encrypt data segments
-    var encrypted_mail =
-		await arweave.crypto.encrypt(mail_buf, key_buf)
+    var encrypted_data =
+		await arweave.crypto.encrypt(data_buf, key_buf)
     var encrypted_key =
 		await window.crypto.subtle.encrypt(
 		    {
 		        name: 'RSA-OAEP'
 		    },
 		    pub_key,
-		    key_buf
+		    data_buf
 		)
 
     // Concatenate and return them
-    return arweave.utils.concatBuffers([encrypted_key, encrypted_mail])
+    return arweave.utils.concatBuffers([encrypted_key, encrypted_data])
 }
 
-export async function decrypt_mail (enc_data, key) {
+export async function decrypt_data (enc_data, key) {
     var enc_key = new Uint8Array(enc_data.slice(0, 512))
-    var enc_mail = new Uint8Array(enc_data.slice(512))
+    var enc_data = new Uint8Array(enc_data.slice(512))
 
     var symmetric_key = await window.crypto.subtle.decrypt({ name: 'RSA-OAEP' }, key, enc_key)
 
-    return arweave.crypto.decrypt(enc_mail, symmetric_key)
+    return arweave.crypto.decrypt(enc_data, symmetric_key)
 }
 
 export async function wallet_to_key (wallet) {

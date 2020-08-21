@@ -176,7 +176,7 @@ class App extends Component {
       <Menu {...this.props} toggleAside={() => this.toggleAside() } pending_messages={this.state.pending_messages}/>
     </aside>);
     let routes = [
-      <Route key='home' path="/" exact component={HomePage}/>,
+      <Route key='home' path="/" exact component={() => <TimelogCreator history={this.props.history}/>}/>,
       <Route key='Timesheets' path="/Timesheets" exact component={LogPage}/>,
       <Route key='TimelogCreator' path="/TimelogCreator" exact component={() => <TimelogCreator history={this.props.history}/>}/>,
       <Route key='ClientList' path="/ClientList" exact component={ClientList}/>,
